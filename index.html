@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Portfolio — Shirsendu</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+		<meta name="description" content="Professional portfolio showcasing achievements and experience">
+		<style>
+			:root{
+				--accent:#0b6cff;
+				--muted:#6b7280;
+				--glass: rgba(255,255,255,0.6);
+			}
+			html,body{height:100%;}
+			body{
+				margin:0; background:#fff; color:#111; font-family:'Merriweather', Georgia, serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+				-webkit-text-size-adjust:100%;
+			}
+			/* NAV */
+			.nav{
+				position:fixed; top:0; left:0; right:0; height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 28px; z-index:40;
+			background: rgba(0,0,0,0.4);
+			color:#fff; backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+			border-bottom: 1px solid rgba(255,255,255,0.1);
+		}
+		.brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:0.2px; font-family:'Playfair Display', serif; color:#fff}
+		.brand .mark{width:36px; height:36px; display:grid; place-items:center; border-radius:8px; background:rgba(255,255,255,0.15); overflow:hidden;}
+		.brand .mark img{width:100%; height:100%; object-fit:contain; display:block;}
+		.nav-links{display:flex; gap:28px; align-items:center}
+		.nav-links a{color:#fff; text-decoration:none; font-weight:500; opacity:0.85; transition:all .24s ease; padding:8px 12px; border-radius:6px;}
+		.nav-links a:hover{opacity:1; background:rgba(255,255,255,0.15)}
+			.nav-resume{padding:8px 14px; background:#002fa7; border-radius:6px; color:#fff; text-decoration:none; font-weight:600; transition:background .24s ease}
+			.nav-resume:hover{background:#001a6e}
+.hero{padding:140px 28px 48px; max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:48px}
+		.hero-content{flex:1}
+		.hero-image{flex-shrink:0; width:240px; height:240px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, #f5f5f7, #e8e8eb); display:grid; place-items:center; box-shadow:0 20px 40px rgba(0,0,0,0.1); animation:fadeInScale .8s cubic-bezier(0.34, 1.56, 0.64, 1)}
+		.hero-image img{width:100%; height:100%; object-fit:cover}
+		.hero h1{font-family:'Playfair Display', serif; font-size:48px; margin:0 0 16px; font-weight:700; letter-spacing:-0.5px}
+		.hero p{margin:0 0 24px; color:var(--muted); font-size:16px; line-height:1.6}
+		.cta{display:inline-block; padding:12px 24px; border-radius:8px; background:#002fa7; color:white; text-decoration:none; font-weight:600; transition:all .28s ease; box-shadow:0 4px 12px rgba(0,47,167,0.3)}
+		.cta:hover{background:#001a6e; transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,47,167,0.4)}
+		.cta.resume-btn{display:inline-block; padding:12px 24px; border-radius:8px; background:#002fa7; color:white; text-decoration:none; font-weight:600; transition:all .28s ease; box-shadow:0 4px 12px rgba(0,47,167,0.3)}
+		.cta.resume-btn:hover{background:#001a6e; transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,47,167,0.4)}
+		@keyframes fadeInScale{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+
+			/* Frosted sections */
+			.section{
+				max-width:1100px; margin:48px auto; padding:32px; border-radius:16px; background: rgba(255,255,255,0.7);
+				backdrop-filter: blur(12px) saturate(120%); -webkit-backdrop-filter: blur(12px) saturate(120%);
+				box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+				border: 1px solid rgba(255,255,255,0.6);
+				transition:all .36s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			.section:hover{box-shadow: 0 12px 40px rgba(0,0,0,0.12)}
+			.grid{display:grid; gap:16px}
+
+			/* Achievements */
+			.achievements{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+			.card{padding:18px; border-radius:12px; background:rgba(250,250,250,0.8);}
+			.card h3{margin:0 0 6px; font-size:18px}
+			.card p{margin:0;color:var(--muted)}
+
+			/* Profiles (vertical list) */
+			.profiles{display:flex;flex-direction:column;gap:12px}
+			.profile{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:10px;background:rgba(250,250,250,0.9);cursor:default;transition:all .28s ease}
+			.profile:hover{box-shadow:0 12px 32px rgba(0,0,0,0.1);transform:translateY(-4px);background:rgba(245,245,247,1)}
+			.profile .icon{width:48px;height:48px;display:grid;place-items:center;border-radius:8px;background:var(--glass);flex-shrink:0}
+			.profile .icon img{width:32px;height:32px;object-fit:contain;border-radius:6px;display:block}
+			.profile a{color:#111;text-decoration:none;font-weight:700}
+			.profile .meta{color:var(--muted);font-size:14px}
+			.highlight-blue{color:#4525ba}
+			.highlight-golden{color:#d4a574;font-weight:700}
+			.highlight-green{color:#10b981;font-weight:700}
+
+		/* Tech Stack */
+		.tech-stack{display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:20px;}
+		.tech-item{display:flex; flex-direction:column; align-items:center; gap:10px; cursor:default; transition:all .28s ease;}
+		.tech-item:hover{transform:translateY(-6px);}
+		.tech-item .tech-icon{width:70px; height:70px; display:grid; place-items:center; border-radius:12px; background:rgba(250,250,250,0.8); box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:all .28s ease;}
+		.tech-item:hover .tech-icon{box-shadow:0 8px 24px rgba(0,0,0,0.12);}
+		.tech-item .tech-icon img{width:45px; height:45px; object-fit:contain; display:block;}
+		.tech-item .tech-name{font-weight:600; font-size:12px; color:#111; text-align:center;}
+
+			/* Projects */
+			.projects{display:flex;flex-direction:column;gap:12px}
+			.project{border-radius:12px;padding:16px;background:rgba(250,250,250,0.95);display:flex;flex-direction:column;gap:10px;transition:all .28s cubic-bezier(0.4, 0, 0.2, 1)}
+			.project:hover{box-shadow:0 10px 32px rgba(0,0,0,0.1);background:rgba(245,245,247,1)}
+			.project-header{display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+			.project-header .logo{width:60px;height:60px;min-width:60px;border-radius:12px;background:linear-gradient(135deg, rgba(245,245,247,0.8), rgba(255,255,255,0.8));display:grid;place-items:center;transition:transform .28s ease}
+			.project:hover .project-header .logo{transform:scale(1.05)}
+			.project-header .logo img{width:50px;height:50px;object-fit:contain;border-radius:8px}
+			.project-header .title{font-weight:700; font-size:16px}
+			.project-brief{color:var(--muted); font-size:14px}
+			.project-details{overflow:hidden;max-height:0;transition:max-height .4s cubic-bezier(0.4, 0, 0.2, 1),opacity .36s ease;opacity:0;padding-top:0}
+			.project.open .project-details{opacity:1;padding-top:12px}
+			.project-tech{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+			.project-tech img{width:32px;height:32px;object-fit:contain;border-radius:6px}
+			.profile .icon img{width:32px;height:32px;object-fit:contain;border-radius:6px;display:block}
+
+			/* Experience list */
+			.experience{display:flex; flex-direction:column; gap:10px}
+			.company{
+				display:flex; gap:16px; align-items:center; padding:14px 16px; border-radius:10px; transition:all .28s cubic-bezier(0.4, 0, 0.2, 1); cursor:pointer;
+				background:transparent;
+			}
+			.company:hover{transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.1); background: rgba(245,245,247,0.8)}
+			.logo{width:64px; height:64px; min-width:64px; display:grid; place-items:center; border-radius:10px; background:var(--glass); backdrop-filter:blur(6px);}
+			.logo img{width:52px;height:52px;object-fit:contain;border-radius:8px;display:block}
+			.tech-img{width:28px;height:28px;object-fit:contain;border-radius:6px;display:block}
+			.company-info{display:flex; flex-direction:column}
+			.company-info .name{font-weight:700}
+			.company-info .role{color:var(--muted); font-size:14px}
+			.company:hover .name{color:var(--accent)}
+
+			/* Footer */
+			footer{max-width:1100px;margin:36px auto 80px;padding:18px;color:var(--muted); text-align:center}
+
+			/* Responsive */
+			@media (max-width:720px){
+				.hero h1{font-size:32px}
+				.nav{padding:0 14px}
+				.brand span{display:none}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="nav">
+			<div class="brand">
+				<div class="mark" aria-hidden="true">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.TBb5I3f6XPxWHyKvuvwqGgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+				<div>
+					<div style="font-size:15px">Shirsendu Pal</div>
+					<div style="font-size:12px;opacity:.8">Software Engineer</div>
+				</div>
+			</div>
+			<nav class="nav-links" aria-label="Main Navigation">
+				<a href="#about">About</a>
+			<a href="#blogs">Blogs</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero">
+				<div class="hero-content">
+					<h1>Hi — I'm <strong style="font-weight:800;">Shirsendu!</strong></h1>
+					<p>Final year student at IIT Hyderabad. I build software tools and solve algorithmic problems. I also love to play chess (<strong><a href="https://www.chess.com/member/kaiser_idusk">kaiser_idusk</a></strong>). Do send me an invite! Through this page I wish to showcase my skills as a software engineer and publish few blogs on technology and interview experiences that may help those in need.</p>
+					<a href="#contact" class="cta">Contact</a>
+				</div>
+				<div class="hero-image">
+					<img src="https://ik.imagekit.io/kaiseridusk/IMG-20250509-WA0005%20(1).jpg" alt="Profile photo">
+				</div>
+			</section>
+		<section id="projects" class="section">
+				<h2 style="font-family:'Playfair Display', serif; margin:6px 0 12px">Projects</h2>
+				<div class="projects">
+					<div class="project" id="project-1">
+						<div class="project-header" role="button" tabindex="0" aria-expanded="false">
+							<div class="logo"><img src="PUT_PROJECT1_LOGO_URL_HERE" alt="Project 1 logo"></div>
+							<div>
+								<div class="title">Project One</div>
+								<div class="project-brief">Short one-line description of the project.</div>
+							</div>
+						</div>
+						<div class="project-details">
+							<div style="margin-top:10px">Here is a more detailed description of Project One. Replace this with your full write-up, goals, outcomes, links, screenshots, etc.</div>
+							<div class="project-tech">
+								<img src="PUT_PROJECT1_TECH_LOGO_1" alt="Tech 1">
+								<img src="PUT_PROJECT1_TECH_LOGO_2" alt="Tech 2">
+							</div>
+						</div>
+					</div>
+
+					<div class="project" id="project-2">
+						<div class="project-header" role="button" tabindex="0" aria-expanded="false">
+							<div class="logo"><img src="PUT_PROJECT2_LOGO_URL_HERE" alt="Project 2 logo"></div>
+							<div>
+								<div class="title">Project Two</div>
+								<div class="project-brief">Short one-line description of the project.</div>
+							</div>
+						</div>
+						<div class="project-details">
+							<div style="margin-top:10px">Detailed description of Project Two. Replace with your content and links.</div>
+							<div class="project-tech">
+								<img src="PUT_PROJECT2_TECH_LOGO_1" alt="Tech 1">
+								<img src="PUT_PROJECT2_TECH_LOGO_2" alt="Tech 2">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="experience" class="section">
+				<h2 style="font-family:'Playfair Display', serif; margin:6px 0 12px">Experience</h2>
+				<div class="experience">
+					<!-- Incoming role -->
+					<div class="company" tabindex="0">
+						<div class="logo" aria-hidden="true">
+							<a href="#" target="_blank" rel="noopener">
+								<img src="https://static-asset.inc42.com/navi-technologies.png" alt="Navi Technologies logo">
+							</a>
+						</div>
+						<div class="company-info">
+							<div class="name">Navi Technologies</div>
+							<div class="role">Incoming SWE-1</div>
+						</div>
+					</div>
+
+					<!-- SDE Intern -->
+					<div class="company" tabindex="0">
+						<div class="logo" aria-hidden="true">
+							<a href="#" target="_blank" rel="noopener">
+								<img src="https://companieslogo.com/img/orig/SDGR-d5a3b90d.png?t=1681728986&download=true" alt="Schrodinger logo">
+							</a>
+						</div>
+						<div class="company-info">
+							<div class="name">Schrodinger (spun-off D.E. Shaw)</div>
+							<div class="role">SDE Intern — 2 months</div>
+							<div style="margin-top:6px;font-size:13px;color:var(--muted)">Tech stack: <span style="font-weight:700;color:#111">Python</span>, <span style="font-weight:700;color:#111">Textual</span></div>
+							<div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+								<!-- small tech icons as image placeholders: replace src with your image URLs -->
+								<a href="#" target="_blank" rel="noopener">
+									<img class="tech-img" src="https://tse4.mm.bing.net/th/id/OIP.mcDM32dcz8M_EliALCY1JAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Python logo">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- <section id="achievements" class="section">
+				<h2 style="font-family:'Playfair Display', serif; margin:6px 0 12px">Achievements</h2>
+				<div class="achievements">
+					<div class="card">
+						<h3>Launched Major Feature</h3>
+						<p>Led design and implementation of a cross-platform feature used by millions. <strong>Increased retention by 12%</strong>.</p>
+					</div>
+					<div class="card">
+						<h3>Performance Improvements</h3>
+						<p>Refactored core systems to reduce load times by 40% across the product.</p>
+					</div>
+					<div class="card">
+						<h3>Mentorship</h3>
+						<p>Mentored junior engineers and participated in hiring to grow teams effectively.</p>
+					</div>
+				</div>
+			</section> -->
+
+			<section id="profiles" class="section">
+				<h2 style="font-family:'Playfair Display', serif; margin:6px 0 12px">Coding Profiles</h2>
+				<div class="profiles">
+					<div class="profile">
+						<div class="icon" aria-hidden="true">
+							<a href="https://leetcode.com/your-username" target="_blank" rel="noopener">
+								<img src="https://tse2.mm.bing.net/th/id/OIP.oWiIFkqOXUhNT0xcBbLBagHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="LeetCode logo">
+							</a>
+						</div>
+						<div>
+							<a href="https://leetcode.com/u/Kaiser_iDusk/" target="_blank" rel="noopener">LeetCode - <strong>Kaiser_iDusk</strong></a>
+							<div class="meta">Rating: <strong>1814</strong></div>
+						</div>
+					</div>
+
+					<div class="profile">
+						<div class="icon" aria-hidden="true">
+							<a href="https://codeforces.com/profile/your-username" target="_blank" rel="noopener">
+								<img src="https://tse4.mm.bing.net/th/id/OIP.PeNuK7vTJfVrx7U2x6DWcwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Codeforces logo">
+							</a>
+						</div>
+						<div>
+							<a href="https://codeforces.com/profile/omynous_" target="_blank" rel="noopener">Codeforces - <strong class="highlight-blue">omynous_</strong></a>
+							<div class="meta">Rating: <strong class="highlight-blue">Expert</strong> <strong>(max) 1672</strong></div>
+						</div>
+					</div>
+
+					<div class="profile">
+						<div class="icon" aria-hidden="true">
+							<a href="https://www.codechef.com/users/your-username" target="_blank" rel="noopener">
+								<img src="https://tse4.mm.bing.net/th/id/OIP.7zw_2XPOaJCzLSe-egULYgHaFj?w=800&h=600&rs=1&pid=ImgDetMain&o=7&rm=3" alt="CodeChef logo">
+							</a>
+						</div>
+						<div>
+							<a href="https://www.codechef.com/users/kaiser_idusk" target="_blank" rel="noopener">kaiser_idusk</a>
+						<div class="meta">Rating: <span class="highlight-golden">3*</span> (<strong class="highlight-green">1688</strong>)</div>
+						</div>
+					</div>
+
+					<div class="profile">
+						<div class="icon" aria-hidden="true">
+							<a href="https://github.com/your-username" target="_blank" rel="noopener">
+								<img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png" alt="GitHub logo">
+							</a>
+						</div>
+						<div>
+							<a href="https://github.com/Kaiser-iDusk" target="_blank" rel="noopener">Kaiser-iDusk</a>
+							<div class="meta">Repos & contributions</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="tech-stack" class="section">
+				<h2 style="font-family:'Playfair Display', serif; margin:6px 0 12px">Tech Stack</h2>
+				<div class="tech-stack">
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+						<div class="tech-name">Python</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C/C++"></div>
+						<div class="tech-name">C/C++</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg" alt="Julia"></div>
+						<div class="tech-name">Julia</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"></div>
+						<div class="tech-name">Django</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask"></div>
+						<div class="tech-name">Flask</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI"></div>
+						<div class="tech-name">FastAPI</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://tse4.mm.bing.net/th/id/OIP.mcDM32dcz8M_EliALCY1JAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Textual"></div>
+						<div class="tech-name">Textual</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"></div>
+						<div class="tech-name">TensorFlow</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"></div>
+						<div class="tech-name">PyTorch</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="Numpy"></div>
+						<div class="tech-name">Numpy</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"></div>
+						<div class="tech-name">Pandas</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib"></div>
+						<div class="tech-name">Matplotlib</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikit/scikit-original.svg" alt="Scikit-learn"></div>
+						<div class="tech-name">Scikit-learn</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
+						<div class="tech-name">Git</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></div>
+						<div class="tech-name">MongoDB</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"></div>
+						<div class="tech-name">SQL</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div>
+						<div class="tech-name">PostgreSQL</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+						<div class="tech-name">Node.js</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
+						<div class="tech-name">React</div>
+					</div>
+					<div class="tech-item">
+						<div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express"></div>
+						<div class="tech-name">Express</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" class="section">
+				<h2 style="font-family:'Playfair Display', serif;">Contact</h2>
+				<p style="color:var(--muted)">Interested in working together? Email <strong>palshirsendu03@gmail.com</strong> or connect on LinkedIn.</p>
+			<p style="margin-top:12px;"><a href="https://drive.google.com/file/d/17txEKItf_aDhh56HPEfzSRQdZ_zhvslY/view?usp=sharing" target="_blank" class="cta resume-btn" download>View Resume</a></p>
+			</section>
+		</main>
+
+		<footer>
+			© <span id="year"></span> Built with ♡ using Github Pages.
+		</footer>
+
+		<script>
+			// small niceties
+			document.getElementById('year').textContent = new Date().getFullYear();
+			// keyboard focus styles for company items
+			document.querySelectorAll('.company').forEach(el => {
+				el.addEventListener('keydown', e => { if(e.key === 'Enter') el.click(); });
+			});
+
+				// Project expand/collapse logic
+				document.querySelectorAll('.project').forEach(project => {
+					const header = project.querySelector('.project-header');
+					const details = project.querySelector('.project-details');
+					header.addEventListener('click', () => toggleProject(project, header, details));
+					header.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleProject(project, header, details); } });
+				});
+
+				function toggleProject(project, header, details){
+					const isOpen = project.classList.toggle('open');
+					header.setAttribute('aria-expanded', String(isOpen));
+					if(isOpen){
+						details.style.maxHeight = details.scrollHeight + 'px';
+					}else{
+						details.style.maxHeight = '0';
+					}
+				}
+		</script>
+	</body>
+</html>
