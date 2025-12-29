@@ -161,14 +161,20 @@
 				<div class="projects">
 					<div class="project" id="project-1">
 						<div class="project-header" role="button" tabindex="0" aria-expanded="false">
-							<div class="logo"><img src="PUT_PROJECT1_LOGO_URL_HERE" alt="Project 1 logo"></div>
+							<div class="logo"><img src="https://tse4.mm.bing.net/th/id/OIP.JpTTz5XL10_VcYMburYwqAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Project 1 logo"></div>
 							<div>
-								<div class="title">Project One</div>
-								<div class="project-brief">Short one-line description of the project.</div>
+								<div class="title">Gemini Integrated C Shell</div>
+								<div class="project-brief">Developed a Shell utility for Unix like systems in C with built-in Gemini support for command suggestions.</div>
 							</div>
 						</div>
 						<div class="project-details">
-							<div style="margin-top:10px">Here is a more detailed description of Project One. Replace this with your full write-up, goals, outcomes, links, screenshots, etc.</div>
+							<div style="margin-top:10px">
+								<ul>
+									<li>Implemented most commonly used functions like cd, ls, pwd, pipe, redirects, background and command chaining.</li>
+									<li>A tokenizer parses the input and executes the command from left to right except for cases where background task is used.</li>
+									<li>Gemini client is invoked using ']' and the user writes the query in natural english. Then the Gemini API is invoked with CURL and the execution context and the prompt is sent as payload.</li>
+								</ul>
+							</div>
 							<div class="project-tech">
 								<img src="PUT_PROJECT1_TECH_LOGO_1" alt="Tech 1">
 								<img src="PUT_PROJECT1_TECH_LOGO_2" alt="Tech 2">
